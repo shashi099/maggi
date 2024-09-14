@@ -69,11 +69,6 @@ app.use((req, res, next) => {
 app.use("/", itemRouter);
 app.use("/main/:id", reviewRouter);
 app.use('/', userRouter);
-
-app.get('/', (req, res) => {
-    res.send("I am root");
-})
-
  
 app.get('*', wrapAsync(async (req, res, next) => {
     next(new ExpressError(401, "page not found")); 
