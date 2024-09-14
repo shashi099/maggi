@@ -1,10 +1,13 @@
 const List = require('../models/list');
 
+module.exports.root = async(req, res) => {
+    const allLists = await List.find();
+    res.render('pages/main.ejs', {allLists});  
+}
 
 module.exports.Home =  async (req, res) => {  // direct Home page
     const allLists = await List.find();
-    // console.log(allLists);    
-    res.render('pages/main.ejs', {allLists});  
+    res.render('pages/main.ejs', {allLists}); 
 };
 
 module.exports.renderForm = async(req, res) => {
