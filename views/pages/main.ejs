@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="cen">
+            <nav>
+                <div class="logo">
+                    <!-- Replace the name with an image -->
+                    <a href="#"><img src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg" alt="Logo"></a>
+                    <form action="" class="seller-form">
+                        <button>Seller</button>
+                    </form>
+                    
+                    <!-- Seller button moved into the logo section -->
+                </div>
+            
+                <div class="sec">
+                    <form action="/main/search" method="POST">
+                        <div class="search">
+                            <input type="text" name="kuch" id="" placeholder="Search Like pizza, burger, etc.">
+                            <button>Search</button>
+                        </div>
+                    </form>
+                    <div>
+                        <li><a href="/main/offers">Offers</a></li>
+                    </div>
+                    <div>
+                        <a href="#">Help</a>
+                    </div>
+                    
+                    <% if(currUser){ %>
+                        <a href="/logout"><button class="btn1">Logout</button></a>
+                    <%  }  %>
+
+                    <%  if(!currUser){  %> 
+                        <div class="btn">
+                            <a href="/signup"><button class="btn1">Sign Up</button></a>
+                            <a href="/login"><button class="btn2">Log in</button></a>
+                        </div>
+                    <% }  %>
+                </div>
+            </nav>
+            
+            
+        </div>
+
+        <h1> <%= success %> </h1>
+ 
+
+        <!-- <nav>
+            <ul>
+                <li class="one"><a href="#">Name</a></li>
+                <li><a href="/searchs"><i class="ri-search-line"></i>Search</a></li>
+                <li><a href="/main/offers">Offers</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="/log-cre">
+                        <button class="signin"></button>
+                        <button class="signup"></button>
+                    </a></li>
+                 <button></button> 
+            </ul>
+        </nav> -->
+
+        <!-- upper Home small items -->
+        <div class="show">
+            <div class="ing">
+                <h2>What's on your dish?</h2>
+            </div>
+
+            <div class="cards">
+                <% let uniqueVarieties = new Set(); %>
+                <% for(let list of allLists) { 
+                    if(!uniqueVarieties.has(list.variety)) { 
+                        uniqueVarieties.add(list.variety); %>
+                        <a href="/main/<%= list._id %>/option">
+                            <div class="item">
+                                <img src="<%= list.image %>" alt="">
+                                <h3>
+                                    <%= list.variety %>
+                                </h3>
+                            </div>
+                        </a>
+                    <% } 
+                } %>
+            </div>
+            
+        </div>
+
+        <div class="heading">
+            <h2>Top restaurant chains in Indore</h2>
+        </div>
+
+        <!-- Home big items -->
+
+        <div class="products">
+    <% for(let list of allLists){ %>
+        <a href="/main/<%= list._id %>">
+            <div class="card">
+                <img src="<%= list.image %>" alt="Product Image">
+                <div class="temp">
+                    <ul>
+                        <li class="title-price">
+                            <span class="title" style="color: black;"><%= list.title %></span>
+                            <span class="price" style="color: red;">Rs. <%= list.price %></span>
+                        </li>
+                        <li class="location-variety">
+                            <span class="location" style="color: rgb(73, 73, 73);"><%= list.location %></span>
+                            <span class="variety" style="color: rgb(73, 73, 73);"><%= list.variety %></span>
+                        </li>
+                        <li class="subtitle" style="color: grey;">
+                            <span><%= list.subtitle %></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>
+
+
+        <!-- nav -->
+
+        <footer>
+            <div class="f1">
+                <h1>Name</h1>
+                <h3>@2024 Brand Technologies Pvt. Ltd</h3>
+            </div>
+            <div class="f2">
+                <h2>Company</h2>
+                <ul>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Team</li>
+                    <li>Mail</li>
+                    <li>Queries</li>
+                </ul>
+            </div>
+            <div class="f3">
+                <div>
+                    <h2>Contact Us</h2>
+                    <ul>
+                        <li>Help & Support</li>
+                        <li>Partner with Us</li>
+                        <li>Rate Us</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Legal</h2>
+                    <ul>
+                        <li>Terms & Condition</li>
+                        <li>Cookie Policy</li>
+                        <li>Privacy Policy</li>
+                        <li>Relations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="f4">
+                <h2>We deliver to:</h2>
+                <ul>
+                    <li>Bhopal</li>
+                    <li>delhi</li>
+                    <li>Bihar</li>
+                    <li>Rewa</li>
+                    <li>Kahi Pe</li>
+                </ul>
+            </div>
+        </footer>
+
+
+
+<div id="productPopup" class="popup-container">
+    <div class="popup-content">
+        <h2>Add New Product</h2>
+        <form id="productForm" action="/main/addList" method="POST">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="product[title]" required>
+            
+            <label for="variety">Variety</label>
+            <input type="text" id="variety" name="product[variety]" required>
+            
+            <label for="price">Price</label>
+            <input type="number" id="price" name="product[price]" step="0.01">
+            
+            <label for="location">Location</label>
+            <input type="text" id="location" name="product[location]" required>
+            
+            <label for="subtitle">Subtitle (Max 25 characters)</label>
+            <input type="text" id="subtitle" name="product[subtitle]" maxlength="25">
+            
+            <label for="image">Image URL</label>
+            <input type="text" id="image" name="product[image]" placeholder="https://example.com/image.jpg">
+            
+            <button type="submit">Submit</button>
+            <button type="button" id="closePopup">Close</button>
+        </form>
+    </div>
+</div>
+
+
+
+    </div>
+    <script>
+       
+        // JavaScript for handling the pop-up form
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get elements
+            const popupContainer = document.getElementById('productPopup');
+            const closePopupButton = document.getElementById('closePopup');
+            const sellerButton = document.querySelector('.seller-form button');
+
+            // Show the popup
+            sellerButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default form submission
+                popupContainer.style.display = 'flex'; // Show the popup
+            });
+
+            // Hide the popup
+            closePopupButton.addEventListener('click', () => {
+                popupContainer.style.display = 'none'; // Hide the popup
+            });
+        });
+
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> new List </title>
+    <link rel="stylesheet" href="/css/new.css">
+</head>
+<body>
+    <div id="productForm" class="form-container">
+        <h2>Add New Product</h2>
+        <form action="/main/addList" method="POST">
+            <!-- Title (required) -->
+            <label for="title">Title</label>
+            <input type="text" id="title" name="product[title]" required>
+            
+           
+            <!-- Price (optional number) -->
+            <label for="price">Price</label>
+            <input type="number" id="price" name="product[price]" step="0.01">
+            
+            <!-- Location (required) -->
+            <label for="location">Location</label>
+            <input type="text" id="location" name="product[location]" required>
+            
+            <!-- Subtitle (optional, max 25 characters) -->
+            <label for="subtitle">Subtitle (Max 25 characters)</label>
+            <input type="text" id="subtitle" name="product[subtitle]" maxlength="25">
+            
+            <!-- Image URL (with a default image) -->
+            <label for="image">Image URL</label>
+            <input type="text" id="image" name="product[image]" placeholder="https://hips.hearstapps.com/hmg-prod/images/classic-cheese-pizza-recipe-2-64429a0cb408b.jpg">
+            
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details and Reviews</title>
+    <link rel="stylesheet" href="/css/show.css">
+</head>
+
+<body>
+    <div class="cen">
+        <nav>
+            <div class="logo">
+                <!-- Replace the name with an image -->
+                <a href="#"><img
+                        src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg"
+                        alt="Logo"></a>
+                <form action="" class="seller-form">
+                    <button>Seller</button>
+                </form>
+
+                <!-- Seller button moved into the logo section -->
+            </div>
+
+            <div class="sec">
+                <form action="/main/search" method="POST">
+                    <div class="search">
+                        <input type="text" name="kuch" id="" placeholder="Search Like pizza, burger, etc.">
+                        <button>Search</button>
+                    </div>
+                </form>
+                <div>
+                    <li><a href="/main/offers">Offers</a></li>
+                </div>
+                <div>
+                    <a href="#">Help</a>
+                </div>
+                <% if(currUser){ %>
+                    <a href="/logout"><button class="btn1">Logout</button></a>
+                <%  }  %>
+
+                <%  if(!currUser){  %> 
+                    <div class="btn">
+                        <a href="/signup"><button class="btn1">Sign Up</button></a>
+                        <a href="/login"><button class="btn2">Log in</button></a>
+                    </div>
+                <% }  %> 
+            </div>
+        </nav>
+
+
+    </div>
+
+    <div class="main">
+        <div class="item">
+            <img src="<%= details.image %>" alt="Product Image">
+        </div>
+        <div class="item-details">
+            <div class="item-name">
+                <h2>Owned By: <%= details.owner.username %>
+                </h2> <!--Owner details-->
+                <div class="title">
+                    <h2>
+                        <%= details.title %>
+                    </h2>
+                </div>
+                <div class="variety">
+                    <%= details.subtitle %>
+                </div>
+            </div>
+            <div class="info">
+                <div class="price">
+                    <h2>Price</h2>
+                    <h2>Rs. <%= details.price %>
+                    </h2>
+                </div>
+                <div class="count">
+                    <h2>Serves:</h2>
+                    <div class="list">
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5+</li>
+                    </div>
+                </div>
+                <div class="add-cart">
+                    <a href="/payment_details">Buy Now</a>
+                </div>
+            </div>
+
+            <% if(currUser && currUser._id.equals(details.owner._id)) { %>
+                <div class="owner-controls">
+                    <button id="editBtn" class="control-btn">EDIT</button>
+                    <form action="/main/<%= details._id %>/delete?_method=DELETE" method="POST">
+                        <button class="control-btn delete-btn">DELETE</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Edit Form -->
+    <% if(currUser && currUser._id.equals(details.owner._id)) { %>
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <h2>Edit Product Details</h2>
+                <form action="/main/<%= details._id %>/edit" method="post">
+                    <label for="image">Image URL</label>
+                    <input type="text" id="image" name="dets[image]" value="<%= details.image %>">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="dets[title]" value="<%= details.title %>">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="dets[price]" value="<%= details.price %>">
+                    <label for="subtitle">Subtitle</label>
+                    <input type="text" id="subtitle" name="dets[subtitle]" value="<%= details.subtitle %>">
+                    <button type="submit" class="modal-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+
+            <!-- Reviews Section -->
+            <div class="reviews-section">
+                <h2>Reviews</h2>
+
+                <!-- Display existing reviews -->
+                <% details.reviews.forEach(function(review) { %>
+                    <div class="review">
+                        <p>
+                            <%= review.username %>:
+                        </p>
+                        <p>
+                            <%= review.date.toLocaleDateString() %>
+                        </p>
+                        <p>
+                            <%= review.comment %>
+                        </p>
+                        <small>Rating: <%= review.rating %> / 5</small>
+                    </div>
+
+                    <% }) %>
+
+                        <!-- Form for adding new reviews -->
+                    <% if(currUser){ %> <!-- don't show Review form If user is not Logedin at site -->
+
+                        <div class="review-form">
+                            <h3>Leave a Review</h3>
+                            <form action="/main/<%= details._id %>/review" method="POST">
+                                <label for="rating">Rating (1 to 5):</label>
+                                <input type="number" id="rating" name="review[rating]" min="1" max="5" required>
+                                <label for="comment">Comment:</label>
+                                <textarea id="comment" name="review[comment]" rows="4" required></textarea>
+                                <button type="submit">Submit Review</button>
+                            </form>
+                        </div>
+
+                        <% } %>
+            </div>
+
+            <script>
+                // Show modal on Edit button click
+                const editBtn = document.getElementById('editBtn');
+                const modal = document.getElementById('editModal');
+                const closeModal = document.getElementById('closeModal');
+
+                editBtn.addEventListener('click', () => {
+                    modal.style.display = 'block';
+                });
+
+                closeModal.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+
+                // Close modal when clicking outside of it
+                window.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            </script>
+</body>
+
+</html>

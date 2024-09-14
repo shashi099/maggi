@@ -1,0 +1,479 @@
+/* Style for Edit/Delete buttons */
+.owner-controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:hover {
+    background-color: #4cae4c;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Other existing CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+.cen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vw; */
+    padding: 10px;
+    height: 12vh;
+    /* border: 2px solid red; */
+}
+nav {
+    width: 90vw;
+    height: 9vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF; /* Updated to white */
+    color: #333333; /* Dark color for better contrast on white */
+    border: 2px solid #E0E0E0; /* Light border for a subtle effect */
+    border-radius: 10px;
+    transition: box-shadow 0.2s linear;
+    box-shadow: 0px 0px 8px 1px #B0B0B0; /* Softer shadow for a white theme */
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* nav:hover {
+    box-shadow: 0px 0px 15px 1px #FFA500;
+} */
+
+nav a {
+    text-decoration: none;
+    color: #333333; /* Dark color for links */
+}
+
+nav button {
+    cursor: pointer;
+}
+
+.logo {
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    gap: 5vw;
+}
+
+.logo img {
+    max-height: 7vh;
+    max-width: 100%;
+    font-size: 25px;
+    scale: 1.1;
+    object-fit: contain;
+}
+
+.seller-form {
+    margin-left: 20px;
+}
+
+.seller-form button {
+    background-color: #FF4C4C; /* Keep the button color */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seller-form button:hover {
+    background-color: white;
+    color: #FF4C4C;
+}
+
+.sec {
+    width: 67vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.search input {
+    width: 26vw;
+    height: 5vh;
+    font-size: 15px;
+    border: 2px solid #FF4C4C; /* Keep the border color */
+    border-radius: 7px;
+    padding: 0 10px;
+}
+
+.search button {
+    width: 7vw;
+    height: 5vh;
+    border-radius: 7px;
+    border: none;
+    background-color: #FFA500;
+    color: #FFFFFF;
+}
+
+.btn {
+    width: 10vw;
+}
+
+.btn button {
+    width: 48.5%;
+    height: 5vh;
+    border-radius: 7px;
+    background-color: #FF4C4C; /* Keep the button color */
+    color: white;
+    border: none;
+    transition: background-color 0.4s, transform 0.2s;
+}
+
+.btn button:hover {
+    background-color: white;
+    color: #FF4C4C;
+    transform: scale(1.05);
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    gap: 40px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 45%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.item img:hover {
+    transform: scale(1.05);
+}
+
+.item-details {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.item-name h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.item-name .subtitle {
+    font-size: 18px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.price h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.count {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list {
+    display: flex;
+    gap: 10px;
+}
+
+.list li {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.list li:hover {
+    background-color: #333;
+    color: white;
+}
+
+.add-cart a {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ff9900;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.add-cart a:hover {
+    background-color: #e68a00;
+}
+
+/* Sliding Edit Form Styles */
+/* Style for Edit/Delete buttons */
+.owner-controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.control-btn {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:hover {
+    background-color: #4cae4c;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-submit:hover {
+    background-color: #45a049;
+}
+
+
+
+
+/* Reviews Section */
+.reviews-section {
+    background-color: #fff;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.review {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review strong {
+    font-size: 18px;
+}
+
+.review p {
+    font-size: 16px;
+    color: #555;
+}
+
+.review small {
+    font-size: 14px;
+    color: #888;
+}
+
+.review-form h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.review-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.review-form input,
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-form button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review-form button:hover {
+    background-color: #4cae4c;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .item-name h2 {
+        font-size: 24px;
+    }
+
+    .add-cart a {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}

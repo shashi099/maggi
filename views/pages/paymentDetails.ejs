@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="/css/payment.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="left">
+                <h2>Contact Information</h2>
+                <input type="email" name="mail" placeholder="Email">
+                <input type="text" name="num" placeholder="Phone Number">
+                <div class="name">
+                    <input type="text" name="first" placeholder="First Name">
+                    <input type="text" name="second" placeholder="Last Name">
+                </div>
+                <h2>Billing & Shipping</h2>
+                <input type="text" name="adr" placeholder="Address">
+                <input type="text" name="city" placeholder="City">
+                <input type="text" name="state" placeholder="State">
+                <input type="text" name="code" placeholder="Zip Code">
+                <h2>Additional Information</h2>
+                <input type="text" name="notes" placeholder="Notes about your order">
+            </div>
+            <div class="right">
+                <h2>Order Summary</h2>
+                <div class="order-section">
+                    <h5>Shipping</h5>
+                    <div class="option-group">
+                        <label><input type="radio" name="shipping" value="pickup"> Local Pickup</label>
+                        <label><input type="radio" name="shipping" value="delivery"> Local Delivery: $2.99</label>
+                    </div>
+                </div>
+                <div class="order-section">
+                    <h5>Pickup Date</h5>
+                    <div class="option-group">
+                        <label><input type="radio" name="pickup-date" value="now"> Right Now</label>
+                        <label><input type="radio" name="pickup-date" value="later"> After Some Time</label>
+                    </div>
+                </div>
+                <div class="tip">
+                    <h2>Tip Amount</h2>
+                    <div class="button-group">
+                        <button>15%</button>
+                        <button>18%</button>
+                        <button>22%</button>
+                    </div>
+                    <div class="button-group">
+                        <button class="sp">No Tip</button>
+                        <button>Custom Tip</button>
+                    </div>
+                </div>
+                <div class="summary">
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span>$16.87</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax</span>
+                        <span>$1.60</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span>$17.37</span>
+                    </div>
+                    <button class="pay-now">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

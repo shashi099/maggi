@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Offers</title>
+    <link rel="stylesheet" href="../css/offer.css">
+</head>
+
+<body>
+    <!-- Offer Banner Section -->
+    <section class="offer-banner">
+        <div class="banner-content">
+            <h1>Exclusive Food Offers</h1>
+            <p>Get amazing discounts on your favorite food items!</p>
+        </div>
+    </section>
+
+    <!-- Offer Cards Section -->
+    <section class="offer-cards">
+        <div class="cards-container">
+            <% for(let variety of varieties){ %>
+            <a href="/main/<%= variety._id %>" class="card-link">  <!-- direct to show.ejs page -->
+                <div class="card">
+                    <div class="image-container">
+                        <img src="<%= variety.image %>" alt="<%= variety.title %>">
+                        <div class="discount-badge"><%= variety.discount %> OFF</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= variety.title %></h3>
+                        <p class="card-subtitle"><%= variety.subtitle %></p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+        </div>
+    </section>
+
+    <script src="./js/offer.js"></script>
+</body>
+
+</html>

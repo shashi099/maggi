@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #f6d365, #fda085);
+    color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.form-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.left, .right {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+input[type="text"], input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.name {
+    display: flex;
+    gap: 10px;
+}
+
+.name input {
+    flex: 1;
+}
+
+.order-section {
+    margin-bottom: 20px;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tip {
+    margin-top: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.button-group button {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.button-group button:hover {
+    background-color: #2980b9;
+}
+
+.sp {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.summary {
+    margin-top: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.pay-now {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.pay-now:hover {
+    background-color: #27ae60;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+    }
+}

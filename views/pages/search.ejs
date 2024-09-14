@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="../css/search.css">
+    <!-- <style>
+        /* General Reset */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ff6347;
+}
+
+.logo img {
+    height: 40px; /* Adjust as needed */
+}
+
+.seller-form button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: #ff6347;
+    cursor: pointer;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    color: #ff6347;
+    cursor: pointer;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.nav-links .btn1, .nav-links .btn2 {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #ff6347;
+    cursor: pointer;
+}
+
+.nav-links .btn1:hover, .nav-links .btn2:hover {
+    background-color: #e55347;
+}
+
+
+/* Search Summary */
+.search-summary {
+    padding: 20px;
+    text-align: center;
+}
+
+.search-summary h2 {
+    color: #333;
+}
+
+.search-summary span {
+    color: #ff6347;
+}
+
+/* Filters Section */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-group label {
+    font-weight: bold;
+}
+
+.filter-group button {
+    padding: 10px;
+    border: 1px solid #ff6347;
+    background-color: white;
+    color: #ff6347;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-group button:hover {
+    background-color: #ff6347;
+    color: white;
+}
+
+/* Results Section */
+.results {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.result-container {
+width: 70vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Card Animation */
+.result-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.result-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.result-img img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.result-card:hover .result-img img {
+    transform: scale(1.1);
+}
+
+.result-info h3 {
+    color: #ff6347;
+    margin: 10px 0;
+}
+
+.result-info p {
+    margin: 5px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin: 10px 0;
+}
+    </style> -->
+</head>
+
+<body>
+    <header>
+        <div class="cen">
+            <nav>
+                <div class="logo">
+                    <!-- Replace the name with an image -->
+                    <a href="#"><img src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg" alt="Logo"></a>
+                    <form action="" class="seller-form">
+                        <button>Seller</button>
+                    </form>
+                    
+                    <!-- Seller button moved into the logo section -->
+                </div>
+            
+                <div class="sec">
+                    <form action="/main/search" method="POST">
+                        <div class="search">
+                            <input type="text" name="kuch" id="" placeholder="Search Like pizza, burger, etc.">
+                            <button>Search</button>
+                        </div>
+                    </form>
+                    <div>
+                        <li><a href="/main/offers">Offers</a></li>
+                    </div>
+                    <div>
+                        <a href="#">Help</a>
+                    </div>
+                    <div class="btn">
+                        <a href="/signup"><button class="btn1">Sign Up</button></a>
+                        <a href="/login"><button class="btn2">Log in</button></a>
+                    </div>
+                </div>
+            </nav>
+            
+            
+        </div>
+    </header>
+
+    <main>
+        <section class="search-summary">
+            <h2>Search Results for: <span><%= item %></span></h2>
+        </section>
+
+        <section class="filters">
+            <div class="filter-group">
+                <label>Categories:</label>
+                <form action="/optionCategory" method="get">
+                    <button type="submit" name="food" value="Pizza">Pizza</button>
+                    <button type="submit" name="food" value="Burger">Burger</button>
+                    <button type="submit" name="food" value="Sandwich">Sandwich</button>
+                    <button type="submit" name="food" value="Maggi">Maggi</button>
+                </form>                
+                
+            </div>
+            <div class="filter-group">
+                <label>Price Range:</label>
+                <button>1-100</button>
+                <button>100-500</button>
+                <button>500-1k</button>
+                <button>1k-10k</button>
+            </div>
+        </section>
+
+        <section class="results">
+            <div class="result-container">
+                <% if (allItems.length > 0) { %>
+                    <% for (let item of allItems) { %>
+                        <a href="/main/<%= item._id %>"> <!-- direct to show.ejs page -->
+                            <div class="result-card">
+                                <div class="result-img">
+                                    <img src="<%= item.image %>" alt="<%= item.title %> Image">
+                                </div>
+                                <div class="result-info">
+                                    <h3><%= item.title %></h3>
+                                    <p><strong>Rating:</strong> 4.9*</p>
+                                    <p><strong>Location:</strong> <%= item.location || 'Unknown' %></p>
+                                    <p><%= item.subtitle || 'No subtitle available' %></p>
+                                </div>
+                            </div>
+                        </a>
+                    <% } %>
+                <% } else { %>
+                    <h3>No results found for your search criteria.</h3>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <h2>Contact Us</h2>
+            <ul>
+                <li>Email: support@foodexplorer.com</li>
+                <li>Phone: +123-456-7890</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h2>Follow Us</h2>
+            <ul>
+                <li>Facebook</li>
+                <li>Instagram</li>
+                <li>Twitter</li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>
