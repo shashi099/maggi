@@ -4,6 +4,7 @@ const wrapAsync = require('../utils/wrapAsync.js');
 const passport = require('passport');
 const userController = require('../controller/user.js');
 
+
 // signup Route 
 router.route("/signup")
 .get( userController.renderSignup)
@@ -12,8 +13,9 @@ router.route("/signup")
 
 // main page Route after log
 router.route("/login")
-.get( userController.renderLogin)
-.post( passport.authenticate('local', {
+.get(userController.renderLogin)
+.post(
+    passport.authenticate('local', {
     failureFlash: true,
     failureRedirect: '/login',
 }),

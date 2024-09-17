@@ -1,10 +1,13 @@
 const List = require('../models/list');
 
+module.exports.root = async(req, res) => {
+    const allLists = await List.find();
+    res.render('pages/main.ejs', {allLists});  
+}
 
 module.exports.Home =  async (req, res) => {  // direct Home page
     const allLists = await List.find();
-    // console.log(allLists);    
-    res.render('pages/main.ejs', {allLists});  
+    res.render('pages/main.ejs', {allLists}); 
 };
 
 module.exports.renderForm = async(req, res) => {
@@ -26,7 +29,10 @@ module.exports.addNewItem = async(req, res) => {
 //search Rooute
 module.exports.search = async(req, res) => {    
     let item = req.body.kuch;
-
+    // console.log("=>", item);
+    if(!item){
+        res.redirect("/main");
+    }
     try {
         const allItems = await List.find({ variety: item });  // Find items where 'variety' matches the given item
         // Render the search.ejs template, passing allItems to it

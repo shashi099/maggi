@@ -5,6 +5,7 @@ const {isLoggedIn, deleteReview, isOwner }= require("../middleware/middleware.js
 router.use(express.urlencoded({ extended: true }));
 const listConstroller = require('../controller/list.js');
 
+router.get("/", listConstroller.root);
 
 router.get('/main', listConstroller.Home);
 

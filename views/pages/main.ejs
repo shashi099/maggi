@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
     <title>Home</title>
+    <style>
+        #cities{
+            display: inline;
+            font-size: 27px;
+            font-weight: 900;
+            color: #8B0000;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,14 +23,16 @@
             <nav>
                 <div class="logo">
                     <!-- Replace the name with an image -->
-                    <a href="#"><img src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg" alt="Logo"></a>
+                    <a href="/main"><img
+                            src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg"
+                            alt="Logo"></a>
                     <form action="" class="seller-form">
                         <button>Seller</button>
                     </form>
-                    
+
                     <!-- Seller button moved into the logo section -->
                 </div>
-            
+
                 <div class="sec">
                     <form action="/main/search" method="POST">
                         <div class="search">
@@ -36,25 +46,27 @@
                     <div>
                         <a href="#">Help</a>
                     </div>
-                    
+
                     <% if(currUser){ %>
                         <a href="/logout"><button class="btn1">Logout</button></a>
-                    <%  }  %>
+                        <% } %>
 
-                    <%  if(!currUser){  %> 
-                        <div class="btn">
-                            <a href="/signup"><button class="btn1">Sign Up</button></a>
-                            <a href="/login"><button class="btn2">Log in</button></a>
-                        </div>
-                    <% }  %>
+                            <% if(!currUser){ %>
+                                <div class="btn">
+                                    <a href="/signup"><button class="btn1">Sign Up</button></a>
+                                    <a href="/login"><button class="btn2">Log in</button></a>
+                                </div>
+                                <% } %>
                 </div>
             </nav>
-            
-            
+
+
         </div>
 
-        <h1> <%= success %> </h1>
- 
+        <h1>
+            <%= success %>
+        </h1>
+
 
         <!-- <nav>
             <ul>
@@ -77,9 +89,8 @@
             </div>
 
             <div class="cards">
-                <% let uniqueVarieties = new Set(); %>
-                <% for(let list of allLists) { 
-                    if(!uniqueVarieties.has(list.variety)) { 
+                <% let uniqueVarieties=new Set(); %>
+                    <% for(let list of allLists) { if(!uniqueVarieties.has(list.variety)) {
                         uniqueVarieties.add(list.variety); %>
                         <a href="/main/<%= list._id %>/option">
                             <div class="item">
@@ -89,42 +100,50 @@
                                 </h3>
                             </div>
                         </a>
-                    <% } 
-                } %>
+                        <% } } %>
             </div>
-            
+
         </div>
 
         <div class="heading">
-            <h2>Top restaurant chains in Indore</h2>
+            <h2>Top restaurant chains in <div id="cities"><b> <i> indore </i> </b></div>
+            </h2>
         </div>
 
         <!-- Home big items -->
 
         <div class="products">
-    <% for(let list of allLists){ %>
-        <a href="/main/<%= list._id %>">
-            <div class="card">
-                <img src="<%= list.image %>" alt="Product Image">
-                <div class="temp">
-                    <ul>
-                        <li class="title-price">
-                            <span class="title" style="color: black;"><%= list.title %></span>
-                            <span class="price" style="color: red;">Rs. <%= list.price %></span>
-                        </li>
-                        <li class="location-variety">
-                            <span class="location" style="color: rgb(73, 73, 73);"><%= list.location %></span>
-                            <span class="variety" style="color: rgb(73, 73, 73);"><%= list.variety %></span>
-                        </li>
-                        <li class="subtitle" style="color: grey;">
-                            <span><%= list.subtitle %></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </a>
-    <% } %>
-</div>
+            <% for(let list of allLists){ %>
+                <a href="/main/<%= list._id %>">
+                    <div class="card">
+                        <img src="<%= list.image %>" alt="Product Image">
+                        <div class="temp">
+                            <ul>
+                                <li class="title-price">
+                                    <span class="title" style="color: black;">
+                                        <%= list.title %>
+                                    </span>
+                                    <span class="price" style="color: red;">Rs. <%= list.price %></span>
+                                </li>
+                                <li class="location-variety">
+                                    <span class="location" style="color: rgb(73, 73, 73);">
+                                        <%= list.location %>
+                                    </span>
+                                    <span class="variety" style="color: rgb(73, 73, 73);">
+                                        <%= list.variety %>
+                                    </span>
+                                </li>
+                                <li class="subtitle" style="color: grey;">
+                                    <span>
+                                        <%= list.subtitle %>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
 
 
         <!-- nav -->
@@ -177,39 +196,63 @@
 
 
 
-<div id="productPopup" class="popup-container">
-    <div class="popup-content">
-        <h2>Add New Product</h2>
-        <form id="productForm" action="/main/addList" method="POST">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="product[title]" required>
-            
-            <label for="variety">Variety</label>
-            <input type="text" id="variety" name="product[variety]" required>
-            
-            <label for="price">Price</label>
-            <input type="number" id="price" name="product[price]" step="0.01">
-            
-            <label for="location">Location</label>
-            <input type="text" id="location" name="product[location]" required>
-            
-            <label for="subtitle">Subtitle (Max 25 characters)</label>
-            <input type="text" id="subtitle" name="product[subtitle]" maxlength="25">
-            
-            <label for="image">Image URL</label>
-            <input type="text" id="image" name="product[image]" placeholder="https://example.com/image.jpg">
-            
-            <button type="submit">Submit</button>
-            <button type="button" id="closePopup">Close</button>
-        </form>
-    </div>
-</div>
+        <div id="productPopup" class="popup-container">
+            <div class="popup-content">
+                <h2>Add New Product</h2>
+                <form id="productForm" action="/main/addList" method="POST">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" minlength="5" maxlength="20" name="product[title]" required>
+
+                    <label for="variety">Variety</label>
+                    <input type="text" id="variety" maxlength="15" name="product[variety]" required>
+
+                    <label for="price">Price</label>
+                    <input type="number" id="price" maxlength="4" name="product[price]" step="0.01">
+
+                    <label for="location">Location</label>
+                    <input type="text" id="location" maxlength="20" minlength="3" name="product[location]" required>
+
+                    <label for="subtitle">Subtitle (Max 25 characters)</label>
+                    <input type="text" id="subtitle"  name="product[subtitle]" maxlength="25">
+
+                    <label for="image">Image URL</label>
+                    <input type="text" id="image" name="product[image]" placeholder="https://example.com/image.jpg">
+
+                    <button type="submit">Submit</button>
+                    <button type="button" id="closePopup">Close</button>
+                </form>
+            </div>
+        </div>
 
 
 
     </div>
     <script>
-       
+        let cities = ["Bihar", "Bhopal", "Siwan", "Chapra", "Indore", "Narela"];
+
+        function showCity(city) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    document.querySelector("#cities").innerHTML = city;
+                    // console.log(city);
+                    resolve();
+                }, 1000);
+            });
+        }
+
+        async function logCitiesSequentially() {
+            for (let i=0; i < cities.length; i++) {
+                await showCity(cities[i]); // wait for each city to be logged after 1 second
+                if(i == cities.length -1){
+                    i = 0;
+                }
+            }
+        }
+
+        logCitiesSequentially();
+
+
+
         // JavaScript for handling the pop-up form
         document.addEventListener('DOMContentLoaded', () => {
             // Get elements
@@ -229,7 +272,7 @@
             });
         });
 
-        
+
 
     </script>
 </body>

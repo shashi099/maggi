@@ -185,7 +185,7 @@ nav button {
 }
 
 .result-container {
-width: 70vw;
+width: 25vw;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -203,7 +203,7 @@ width: 70vw;
 }
 
 .result-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -216,7 +216,7 @@ width: 70vw;
 }
 
 .result-card:hover .result-img img {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .result-info h3 {

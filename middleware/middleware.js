@@ -14,11 +14,13 @@ module.exports.isOwner = async(req, res, next) => {
 module.exports.isLoggedIn = (req, res, next) => {
     console.log("req",req.user);
     if (!req.isAuthenticated()) {
+        req.session.redirectUrl = req.originalUrl;
         req.flash("errorMsg", "You must Logged In");
         return res.redirect('/login');
     }
     next();
-}
+} 
+
 
 module.exports.deleteReview = async (req, res, next) => {
     let {id} = req.params;
