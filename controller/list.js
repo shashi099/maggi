@@ -2,11 +2,13 @@ const List = require('../models/list');
 
 module.exports.root = async(req, res) => {
     const allLists = await List.find();
+    console.log(allLists);    
     res.render('pages/main.ejs', {allLists});  
 }
 
 module.exports.Home =  async (req, res) => {  // direct Home page
     const allLists = await List.find();
+    console.log(allLists);
     res.render('pages/main.ejs', {allLists}); 
 };
 
@@ -18,9 +20,14 @@ module.exports.addNewItem = async(req, res) => {
     let productData = req.body.product;
         
     console.log("Product Data: ", productData);
+    // console.log(productData.variety.toUpperCase());
+    
 
     const newList = new List(req.body.product);
+    newList.variety = productData.variety.toUpperCase();
     newList.owner = req.user._id;          /* after creating a new listing inside the listing Owner id is saving */
+    // console.log(newList);
+    
     await newList.save();
     req.flash("success", "List added succsfully");
     res.redirect("/main");
@@ -30,6 +37,9 @@ module.exports.addNewItem = async(req, res) => {
 module.exports.search = async(req, res) => {    
     let item = req.body.kuch;
     // console.log("=>", item);
+    item = item.toUpperCase();
+    // console.log(item);
+    
     if(!item){
         res.redirect("/main");
     }
@@ -46,6 +56,8 @@ module.exports.search = async(req, res) => {
 //
 module.exports.offer = async(req, res) => {
     const allVarities = await List.distinct('variety');
+    // console.log( "=>", allVarities);
+        
     let varieties = await List.find({ variety: allVarities[0] });    
     res.render("pages/offer.ejs", { varieties });
 };

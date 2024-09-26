@@ -24,7 +24,10 @@ const reviewSchema = new Schema({
     date: {
         type: Date,
         default: Date.now  // sets the current date by default
-    }
+    },
+    author: {
+        type: String,
+     }
 });
 
 

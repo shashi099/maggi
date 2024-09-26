@@ -12,6 +12,40 @@ body{
     /* background-color: black; */
     color: #333333;
 }
+
+.success {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4edda;    /* Success background color */
+    color: #155724;    /* Success text color */
+    padding: 10px;
+    border: 1px solid #c3e6cb;    /* Border color */
+    border-radius: 5px;
+    margin: 20px 0;    /* Margin for spacing */
+    margin-left: 20%;
+    display: none;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+
+/* Jo Cities evertime move kar raha hai */
+#cities {
+    display: inline;
+    font-size: 27px;
+    font-weight: 900;
+    color: #8B0000;
+}
+
+
 /* nav{
     display: flex;
      height: 10vh;
@@ -114,7 +148,8 @@ nav button {
     margin-left: 20px;
 }
 
-.seller-form button {
+
+ .seller-form button {
     background-color: #FF4C4C; /* Keep the button color */
     color: white;
     padding: 8px 16px;
@@ -125,8 +160,8 @@ nav button {
 }
 
 .seller-form button:hover {
-    background-color: white;
-    color: #FF4C4C;
+    background-color: rgb(239, 116, 116);
+    color: #f9f9f9;
 }
 
 .sec {
@@ -154,6 +189,23 @@ nav button {
     border: none;
     background-color: #FFA500;
     color: #FFFFFF;
+}
+
+
+/* all for logout */
+.logout{
+    background-color: #FF4C4C; /* Keep the button color */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 15px;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.logout:hover {
+    background-color: rgb(239, 116, 116);
+    color: #f9f9f9;
 }
 
 .btn {
@@ -282,9 +334,10 @@ img{
 
 .products {
     display: flex;
-    margin-left: 6.8vw;
-    width: 85vw;
+    /* margin-left: 6.8vw; */
+    width: 98vw;
     padding-left: 30px;
+    justify-content: space-evenly;
     /* border: 2px solid red; */
     flex-wrap: wrap;
 }
@@ -301,7 +354,7 @@ img{
     margin: 20px;
     padding: 20px; /* Increased padding */
     height: 37vh; /* Increased card height */
-    /* background-color: #FFF4E3; */
+    /* background-color: #f1a027; */
     background-color: #E0F7FA; /* Pale blue */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */

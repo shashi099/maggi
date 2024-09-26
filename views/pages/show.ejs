@@ -65,10 +65,9 @@
                         <%= details.title %>
                     </h2>
                 </div>
-                <div class="variety">
-                    <%= details.subtitle %>
-                </div>
+               
             </div>
+
             <div class="info">
                 <div class="price">
                     <h2>Price</h2>
@@ -78,11 +77,11 @@
                 <div class="count">
                     <h2>Serves:</h2>
                     <div class="list">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5+</li>
+                        <li value="1" >1</li>
+                        <li value="2" >2</li>
+                        <li value="3" >3</li>
+                        <li value="4" >4</li>
+                        <li value="5" >5+</li>
                     </div>
                 </div>
                 <div class="add-cart">
@@ -99,6 +98,9 @@
                 </div>
                 <% } %>
         </div>
+        <div class="variety">
+            Description:- <%= details.description %>
+        </div>
     </div>
 
     <!-- Modal Popup for Edit Form -->
@@ -114,8 +116,8 @@
                     <input type="text" id="title" name="dets[title]" value="<%= details.title %>">
                     <label for="price">Price</label>
                     <input type="text" id="price" name="dets[price]" value="<%= details.price %>">
-                    <label for="subtitle">Subtitle</label>
-                    <input type="text" id="subtitle" name="dets[subtitle]" value="<%= details.subtitle %>">
+                    <label for="description">description</label>
+                    <input type="text" id="description" name="dets[description]" value="<%= details.description %>">
                     <button type="submit" class="modal-submit">Submit</button>
                 </form>
             </div>
@@ -130,7 +132,7 @@
                 <% details.reviews.forEach(function(review) { %>
                     <div class="review">
                         <p>
-                            <%= review.username %>:
+                            @<%= review.author %>
                         </p>
                         <p>
                             <%= review.date.toLocaleDateString() %>

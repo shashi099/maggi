@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <title>Home</title>
     <style>
-        #cities{
-            display: inline;
-            font-size: 27px;
-            font-weight: 900;
-            color: #8B0000;
-        }
+        
     </style>
 </head>
 
@@ -26,7 +21,9 @@
                     <a href="/main"><img
                             src="https://img.freepik.com/premium-vector/professional-graphic-logo-design-sts_695730-480.jpg"
                             alt="Logo"></a>
-                    <form action="" class="seller-form">
+
+                            <!-- for adding new Item  -->
+                    <form action="/main/new" class="seller-form">
                         <button>Seller</button>
                     </form>
 
@@ -41,15 +38,15 @@
                         </div>
                     </form>
                     <div>
-                        <li><a href="/main/offers">Offers</a></li>
+                        <a href="/main/offers">Offers</a>
                     </div>
                     <div>
                         <a href="#">Help</a>
                     </div>
 
                     <% if(currUser){ %>
-                        <a href="/logout"><button class="btn1">Logout</button></a>
-                        <% } %>
+                        <a href="/logout"><button class="logout">Logout</button></a>
+                    <% } %>
 
                             <% if(!currUser){ %>
                                 <div class="btn">
@@ -63,9 +60,14 @@
 
         </div>
 
-        <h1>
-            <%= success %>
-        </h1>
+
+        <!-- Popup Message for logout and login -->
+        <div id="success-message" class="success" style="display: none;">
+            <span>
+                <%= success %>
+            </span>
+            <button class="close-btn" onclick="hideMessage()">✖</button>
+        </div>
 
 
         <!-- <nav>
@@ -114,6 +116,7 @@
 
         <div class="products">
             <% for(let list of allLists){ %>
+
                 <a href="/main/<%= list._id %>">
                     <div class="card">
                         <img src="<%= list.image %>" alt="Product Image">
@@ -133,9 +136,9 @@
                                         <%= list.variety %>
                                     </span>
                                 </li>
-                                <li class="subtitle" style="color: grey;">
+                                <li class="card-subtitle" style="color: grey;">
                                     <span>
-                                        <%= list.subtitle %>
+                                        <%= list.deliveryTime %>
                                     </span>
                                 </li>
                             </ul>
@@ -195,6 +198,7 @@
         </footer>
 
 
+        <!-- new Form for adding List item it is now working new.ejs is working -->
 
         <div id="productPopup" class="popup-container">
             <div class="popup-content">
@@ -212,8 +216,8 @@
                     <label for="location">Location</label>
                     <input type="text" id="location" maxlength="20" minlength="3" name="product[location]" required>
 
-                    <label for="subtitle">Subtitle (Max 25 characters)</label>
-                    <input type="text" id="subtitle"  name="product[subtitle]" maxlength="25">
+                    <label for="decription">decription (Max 25 characters)</label>
+                    <input type="text" id="decription" name="product[decription]" maxlength="25">
 
                     <label for="image">Image URL</label>
                     <input type="text" id="image" name="product[image]" placeholder="https://example.com/image.jpg">
@@ -227,7 +231,8 @@
 
 
     </div>
-    <script>
+     <script >
+
         let cities = ["Bihar", "Bhopal", "Siwan", "Chapra", "Indore", "Narela"];
 
         function showCity(city) {
@@ -241,9 +246,9 @@
         }
 
         async function logCitiesSequentially() {
-            for (let i=0; i < cities.length; i++) {
+            for (let i = 0; i < cities.length; i++) {
                 await showCity(cities[i]); // wait for each city to be logged after 1 second
-                if(i == cities.length -1){
+                if (i == cities.length - 1) {
                     i = 0;
                 }
             }
@@ -252,29 +257,28 @@
         logCitiesSequentially();
 
 
+        function showMessage(success) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.querySelector('span').textContent = success; // Set the success message text
+            successMessage.style.display = 'flex'; // Show the message
+        }
 
-        // JavaScript for handling the pop-up form
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get elements
-            const popupContainer = document.getElementById('productPopup');
-            const closePopupButton = document.getElementById('closePopup');
-            const sellerButton = document.querySelector('.seller-form button');
+        // Function to hide the success message
 
-            // Show the popup
-            sellerButton.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default form submission
-                popupContainer.style.display = 'flex'; // Show the popup
-            });
+        function hideMessage() {
+            const successMessage = document.getElementById('success-message');
+            successMessage.style.display = 'none'; // Hide the message
+        }
 
-            // Hide the popup
-            closePopupButton.addEventListener('click', () => {
-                popupContainer.style.display = 'none'; // Hide the popup
-            });
+        // Example: Call showMessage when the page loads (or replace this with your backend logic)
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessageFromBackend = "<%= success %>"; // Replace with actual backend logic
+            if (successMessageFromBackend) {
+                showMessage(successMessageFromBackend);
+            }
         });
 
-
-
-    </script>
+        </script>
 </body>
 
 </html>

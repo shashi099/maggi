@@ -8,13 +8,15 @@ const listSchema = mongoose.Schema({
         required: true
     },
     price: Number,
+    variety: String,
     location:{
         type: String,
         required: true
     },
-    subtitle: {
+    description: {
         type: String,
-        maxLength: 25,
+        maxLength: 35,
+        default: "Fresh Ingredients: We use only the highest quality ingredients to ensure every bite is delicious."
     },
     image: {
         type: String,
@@ -23,7 +25,9 @@ const listSchema = mongoose.Schema({
         ? "https://hips.hearstapps.com/hmg-prod/images/classic-cheese-pizza-recipe-2-64429a0cb408b.jpg" 
         : v, 
     },
-    variety: String,
+    deliveryTime : {
+        type: String,
+    },
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Review'  // Refers to the Review schema

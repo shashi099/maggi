@@ -18,14 +18,21 @@
             <!-- Price (optional number) -->
             <label for="price">Price</label>
             <input type="number" id="price" name="product[price]" step="0.01">
+
+            <label for="variety">Variety</label>
+            <input type="text" id="variety" maxlength="15" name="product[variety]" required>
+
+            <label for="deliveryTime"> DeliveryTime</label>
+            <input type="text" id="deliveryTime" maxlength="15" name="product[deliveryTime]" required>
+
             
             <!-- Location (required) -->
             <label for="location">Location</label>
             <input type="text" id="location" name="product[location]" required>
             
-            <!-- Subtitle (optional, max 25 characters) -->
-            <label for="subtitle">Subtitle (Max 25 characters)</label>
-            <input type="text" id="subtitle" name="product[subtitle]" maxlength="25">
+            <!-- description (optional, max 25 characters) -->
+            <label for="description">description (Max 100 characters)</label>
+            <input type="text" id="description" name="product[description]" maxlength="120">
             
             <!-- Image URL (with a default image) -->
             <label for="image">Image URL</label>
